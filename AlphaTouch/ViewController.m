@@ -15,9 +15,22 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
+    // Do any additional setup after loading the view, typically from a nib.
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor yellowColor];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    // Buttom
+    UIButton *firstButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    firstButton.frame = CGRectMake(100, 100, 100, 44);
+    firstButton.backgroundColor = [UIColor whiteColor];
+    [firstButton setTitle:@"Click me!" forState:UIControlStateNormal];
+    [self.view addSubview:firstButton];
+    
+    // Label
+    UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 30, 200, 44)];
+    firstLabel.text = @"Hello, welcome to my app!";
+    firstLabel.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:firstLabel];
 }
 
 - (void)loadView {
