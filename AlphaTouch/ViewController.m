@@ -25,6 +25,9 @@
     firstButton.backgroundColor = [UIColor whiteColor];
     [firstButton setTitle:@"Click me!" forState:UIControlStateNormal];
     [self.view addSubview:firstButton];
+    [firstButton addTarget:self
+                    action:@@selector(buttonPressed:)
+          forControlEvents:UIControlEventTouchUpInside];
     
     // Label
     UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 30, 200, 44)];
@@ -50,4 +53,11 @@
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"End touching the screeen");
 }
+
+- (void)buttonPressed:(UIButton *)sender {
+    NSLog(@"Button pressed, sender %@", sender);
+    self.view.alpha = ((double)arc4random() / 0x100000000);
+    [sender removeFromSuperview];
+}
+
 @end
