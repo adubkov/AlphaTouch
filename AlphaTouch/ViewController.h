@@ -10,6 +10,10 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) UIButton *fiftyPercentButton;
+@property (weak, nonatomic) UIButton *hundredPercentButton;
+@property (weak, nonatomic) UILabel *firstLabel;
+
 - (void)buttonPressed:(UIButton *)sender;
 
 @end

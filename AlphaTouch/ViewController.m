@@ -19,21 +19,34 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor yellowColor];
     
-    // Buttom
-    UIButton *firstButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    firstButton.frame = CGRectMake(100, 100, 100, 44);
-    firstButton.backgroundColor = [UIColor whiteColor];
-    [firstButton setTitle:@"Click me!" forState:UIControlStateNormal];
-    [self.view addSubview:firstButton];
-    [firstButton addTarget:self
-                    action:@@selector(buttonPressed:)
+    // Buttom "Make 50%"
+    UIButton *_fiftyPercentButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.fiftyPercentButton = _fiftyPercentButton;
+    self.fiftyPercentButton.frame = CGRectMake(150, 100, 100, 44);
+    self.fiftyPercentButton.backgroundColor = [UIColor whiteColor];
+    [self.fiftyPercentButton setTitle:@"Make 50%" forState:UIControlStateNormal];
+    [self.fiftyPercentButton addTarget:self
+                    action:@selector(buttonPressed:)
           forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.fiftyPercentButton];
+    
+    // Button "Make 100%"
+    UIButton *_hundredPercentButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.hundredPercentButton = _hundredPercentButton;
+    self.hundredPercentButton.frame = CGRectMake(150, 300, 100, 44);
+    self.hundredPercentButton.backgroundColor = [UIColor whiteColor];
+    [self.hundredPercentButton setTitle:@"Make 100%" forState:UIControlStateNormal];
+    [self.hundredPercentButton addTarget:self
+                     action:@selector(buttonPressed:)
+           forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.hundredPercentButton];
     
     // Label
-    UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 30, 200, 44)];
-    firstLabel.text = @"Hello, welcome to my app!";
-    firstLabel.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:firstLabel];
+    UILabel *_firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 30, 200, 44)];
+    self.firstLabel = _firstLabel;
+    self.firstLabel.text = @"Hello, welcome to my app!";
+    self.firstLabel.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.firstLabel];
 }
 
 - (void)loadView {
@@ -56,8 +69,14 @@
 
 - (void)buttonPressed:(UIButton *)sender {
     NSLog(@"Button pressed, sender %@", sender);
-    self.view.alpha = ((double)arc4random() / 0x100000000);
-    [sender removeFromSuperview];
+    if ([sender isEqual:self.fiftyPercentButton]) {
+        self.view.alpha = .5;
+    } else {
+        self.view.alpha = 1;
+    }
+    // self.view.alpha = ((double)arc4random() / 0x100000000);
+    // Remove button from the view
+    // [sender removeFromSuperview];
 }
 
 @end
